@@ -1,0 +1,18 @@
+{
+  "name": "student-achievements",
+  "version": "1.0.0",
+  "description": "Student Achievements Management System",
+  "main": "index.js",
+  "scripts": {
+    "build": "pip install -r requirements.txt"
+  },
+  "keywords": [
+    "flask",
+    "python",
+    "student",
+    "achievements",
+    "certificates"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Certificates - Admin View{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #0d6efd;">
+                    <h5 class="mb-0"><i class="fas fa-user-graduate me-2"></i>Student Information</h5>
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-sm btn-outline-primary text-black">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Admin Dashboard
+                    </a>
+                </div>
+                <div class="card-body" style="background-color: #1e293b; color: white;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>{{ user.name }}</h3>
+                            <p class="text-white">{{ user.email }}</p>
+
+                            <div class="mt-4">
+                                <h5>Student Details</h5>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p><strong>Roll No:</strong></p>
+                                        <p><strong>Total Certificates:</strong></p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>{{ user.roll_no }}</p>
+                                        <p>{{ certificates|length }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 " style="background-color: #000000;">
+                                <div class="card-body text-center">
+                                    <div class="display-1 text-primary mb-3">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <h4>{{ user.name }}</h4>
+                                    <p class="text-white">Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card mb-4" style="background-color: #212d40;">
+                <div class="card-header" style="background-color: #0d6efd;"> 
+                    <h5 class="mb-0"><i class="fas fa-certificate me-2"></i>Certificates</h5>
+                </div>
+                <div class="card-body">
+                    {% if certificates %}
+                        <div class="table-container">
+                            <table class="table table-hover">
+                                <thead class="text-white">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Upload Date</th>
+                                        <th scope="col">File Type</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cert in certificates %}
+                                        <tr class="text-white">
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ cert.title }}</td>
+                                            <td>{{ cert.timestamp.strftime('%Y-%m-%d') }}</td>
+                                            <td>{{ cert.filename.split('.')[-1].upper() }}</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <a href="{{ url_for('view_certificate', certificate_id=cert.id) }}" class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-eye me-1"></i>View
+                                                    </a>
+                                                    <a href="{{ url_for('static', filename='uploads/' + cert.filename) }}" class="btn btn-sm btn-outline-success" target="_blank">
+                                                        <i class="fas fa-download me-1"></i>Download
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3>No Certificates Found</h3>
+                            <p class="text-muted">This student has not uploaded any certificates yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Return to Admin Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,239 @@
+/* Main Styles */
+body {
+    background: linear-gradient(to bottom right, #0f172a, #1e293b, #334155);
+    color: #f1f5f9; /* Light grayish text for better readability */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar,.card,.container , .text-dark {
+    color: #f1f5f9 !important;
+}
+
+body {
+    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer {
+    
+    margin-top: auto;
+}
+/* Card styles */
+.card {
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card {
+    background-color: #1e293b; /* dark blue-gray */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Certificate card */
+.certificate-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card .card-body {
+    flex: 1;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Form styles */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Custom index page styles */
+.hero-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #000000 0%, #0d6efd 100%);
+    color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #0d6efd;
+}
+
+/* Admin dashboard */
+.admin-card {
+    border-left: 4px solid #0d6efd;
+}
+
+.admin-stats {
+    background-color: #212d40;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/* Dashboard */
+.dashboard-header {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Certificate view */
+.certificate-container {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+/* Upload certificate form */
+.upload-form {
+    background-color: #212d40;
+    padding: 2rem;
+    border-radius: 0.0rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.custom-file-input {
+    color: transparent;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Select certificate file';
+    color: #0d6efd;
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1px solid #0d6efd;
+    border-radius: 3px;
+    padding: 5px 10px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.custom-file-input:hover::before {
+    border-color: #0b5ed7;
+}
+
+.custom-file-input:active::before {
+    background: #e5e7eb;
+}
+
+/* Login and Register forms */
+.auth-card {
+    
+    background: linear-gradient(to bottom right, #0f172a, #1e293b, #334155);
+    color: #f1f5f9; /* Light grayish text for better readability */
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card .card-header {
+    background-color: #0d6efd;
+    color: rgb(245, 245, 245);
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.auth-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+/* Table styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgb(52, 50, 63);
+    color: white;
+}
+
+.table-hover tbody tr:hover * {
+    color: white !important;
+    border-color: white !important;
+}
+
+.certificate-table th {
+    background-color: #f8f9fa;
+}

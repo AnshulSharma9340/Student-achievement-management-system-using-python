@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Certificate - Student Achievements{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4 " >
+                <div class="card-header bg-primary text-white" style="background:  #0d6efd;">
+                    <h5 class="mb-0"><i class="fas fa-upload me-2"></i>Upload New Certificate</h5>
+                </div>
+                <div class="card-body upload-form">
+                    <form method="POST" action="{{ url_for('upload_certificate') }}" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Certificate Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                            <div class="form-text text-white">Enter the name of your certificate or achievement</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                            <div class="form-text text-white">Provide details about this certificate (optional)</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="certificate" class="form-label">Certificate File</label>
+                            <input type="file" class="form-control" id="certificate" name="certificate" accept=".pdf,.png,.jpg,.jpeg" required>
+                            <div class="form-text text-white">Upload your certificate (PDF, PNG, JPG, JPEG formats only)</div>
+                        </div>
+
+                        <div class="alert alert-info" role="alert">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Make sure your certificate file is clear and legible. The maximum file size is 5MB.
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary text-white>
+                                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-cloud-upload-alt me-2"></i>Upload Certificate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card ">
+                <div class="card-header " style="background:  #0d6efd;">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Upload Guidelines</h5>
+                </div>
+                <div class="card-body " style="background-color: #212d40;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-check-circle text-success me-2"></i>Acceptable Formats</h6>
+                            <ul>
+                                <li>PDF documents</li>
+                                <li>PNG, JPG, JPEG images</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-exclamation-circle text-danger me-2"></i>Requirements</h6>
+                            <ul>
+                                <li>File must be clearly legible</li>
+                                <li>Maximum file size: 5MB</li>
+                                <li>Must be an original certificate</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="small text-white">
+                        <p><strong>Note:</strong> Uploaded certificates will be reviewed by administrators.
+                        Please ensure all information is accurate and authentic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('certificate');
+        const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+
+        fileInput.addEventListener('change', function() {
+            if (this.files[0].size > maxSize) {
+                alert('File is too large! Maximum size is 5MB.');
+                this.value = '';
+            }
+        });
+    });
+</script>
+{% endblock %}

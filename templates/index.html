@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Student Achievements Management System{% endblock %}
+
+{% block content %}
+
+<div class="hero-section text-center">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold mb-4">💡 𝒜𝒸𝒶𝒹ℯ𝓂𝒾𝒸 𝒯𝒶𝒾𝓁𝒷𝓁𝒶𝓏ℯ𝓇𝓈 🚀📚</h1>
+        <p class="lead mb-4">A centralized platform to showcase and manage student certificates and achievements</p>
+        {% if not session.get('user_id') %}
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">Register</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">Login</a>
+            </div>
+        {% else %}
+            {% if session.get('is_admin') %}
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-light btn-lg">Go to Admin Dashboard</a>
+            {% else %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg">Go to Dashboard</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Welcome to Academics Tailblazers</h2>
+            <p class="lead">Our platform allows students to securely upload and manage their certificates and achievements.</p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+           <div class="card feature-card h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <i class="fas fa-user-graduate feature-icon"></i>
+                    <h3>students Portal</h3>
+                    <p>Students can register with their roll numbers and securely upload their certificates and achievements.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <i class="fas fa-certificate feature-icon"></i>
+                    <h3>Certificate Management</h3>
+                    <p>Upload and organize all your certificates in one secure place with easy retrieval anytime.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3>Admin Verification</h3>
+                    <p>Administrators can verify and manage all student certificates through a centralized dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h2 class="mb-4">ℍ𝕠𝕨 𝕀𝕥 𝕎𝕠𝕣𝕜𝕤</h2>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">1</span>
+                    </div>
+                    <h5>Register</h5>
+                    <p>Sign up with your student roll number and personal details</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">2</span>
+                    </div>
+                    <h5>Upload</h5>
+                    <p>Add your certificates and achievements</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">3</span>
+                    </div>
+                    <h5>Verify</h5>
+                    <p>Administrators verify your submitted certificates</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center h-100" style="background-color: #212d40;">
+                <div class="card-body">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">4</span>
+                    </div>
+                    <h5>Access</h5>
+                    <p>Access your verified achievements anytime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 mb-4">
+        <div class="col-12 text-center">
+            <h2 class="mb-5">Getting Started</h2>
+            {% if not session.get('user_id') %}
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-4">Register Now</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg px-4">Login</a>
+                </div>
+            {% else %}
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary btn-lg">Go to Admin Dashboard</a>
+                {% else %}
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">Go to Dashboard</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

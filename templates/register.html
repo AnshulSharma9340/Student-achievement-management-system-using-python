@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Student Achievements{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card auth-card">
+                <div class="card-header">
+                    <i class="fas fa-user-plus auth-icon"></i>Student Registration
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('register') }}">
+                        <div class="mb-3">
+                            <label for="roll_no" class="form-label">Roll Number</label>
+                            <input type="text" class="form-control" id="roll_no" name="roll_no" required>
+                            <div class="form-text text-white" >Enter your official student roll number</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="branch" class="form-label">Branch</label>
+                            <select class="form-select" id="branch" name="branch" required>
+                                <option value="" disabled selected>Select your branch</option>
+                                <option value="CSE">Computer Science</option>
+                                <option value="ECE">Electronics</option>
+                                <option value="EEE">Electrical</option>
+                                <option value="ME">Mechanical</option>
+                                <option value="CE">Civil</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="semester" class="form-label">Semester</label>
+                            <select class="form-select" id="semester" name="semester" required>
+                                <option value="" disabled selected>Select your semester</option>
+                                <option value="1">1st</option>
+                                <option value="2">2nd</option>
+                                <option value="3">3rd</option>
+                                <option value="4">4th</option>
+                                <option value="5">5th</option>
+                                <option value="6">6th</option>
+                                <option value="7">7th</option>
+                                <option value="8">8th</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="year" class="form-label">Year</label>
+                            <select class="form-select" id="branch" name="Year" required>
+                                <option value="" disabled selected>Select your year of admission</option>
+                                <option value="CSE">1st Year</option>
+                                <option value="ECE">2nd Year</option>
+                                <option value="ECE">3rd Year</option>
+                                <option value="ECE">4th Year</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="form-text text-white ">Password must be at least 8 characters long</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form validation
+        const form = document.querySelector('form');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm_password');
+
+        form.addEventListener('submit', function(event) {
+            // Check if passwords match
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                event.preventDefault();
+                alert('Passwords do not match!');
+                return false;
+            }
+
+            // Check password length
+            if (passwordInput.value.length < 8) {
+                event.preventDefault();
+                alert('Password must be at least 8 characters long!');
+                return false;
+            }
+
+            return true;
+        });
+    });
+</script>
+{% endblock %}

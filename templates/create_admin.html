@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Admin - Student Achievements{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card auth-card">
+                <div class="card-header bg-danger text-white">
+                    <i class="fas fa-user-shield auth-icon"></i>Create Admin Account
+                </div>
+                <div class="card-body">
+                    {% if admin_exists %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            An admin account already exists in the system. Only one admin account is allowed for security reasons.
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{{ url_for('login') }}" class="btn btn-primary">Go to Login</a>
+                        </div>
+                    {% else %}
+                        <form method="POST" action="{{ url_for('create_admin') }}">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Admin Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Admin Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="form-text">Password must be at least 8 characters long</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-danger">Create Admin Account</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ url_for('login') }}">Back to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        if (form) {
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
+
+            form.addEventListener('submit', function(event) {
+                // Check if passwords match
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    event.preventDefault();
+                    alert('Passwords do not match!');
+                    return false;
+                }
+
+                // Check password length
+                if (passwordInput.value.length < 8) {
+                    event.preventDefault();
+                    alert('Password must be at least 8 characters long!');
+                    return false;
+                }
+
+                return true;
+            });
+        }
+    });
+</script>
+{% endblock %}
