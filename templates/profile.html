@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Student Achievements{% endblock %}
+
+{% block content %}
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #333;
+    }
+
+    .profile-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: flex;
+    }
+
+    .sidebar {
+      background: linear-gradient(to bottom, #0066cc, #003366);
+      color: white;
+      padding: 30px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+
+    .sidebar h2 {
+      margin: 10px 0 5px;
+      font-size: 22px;
+    }
+
+    .sidebar p {
+      font-size: 14px;
+      color: #cbd6f6;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section h3 {
+      color: #003366;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 5px;
+    }
+
+    .section input, .section textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .section textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+
+<div class="profile-container">
+  <div class="sidebar">
+    <img src="https://i.imgur.com/6VBx3io.png" alt="Profile Picture">
+    <h2>John Doe</h2>
+    <p>Student | Python Developer</p>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <h3>Contact Information</h3>
+      <input type="email" placeholder="Email: johndoe@example.com">
+      <input type="text" placeholder="Phone: +91 9876543210">
+    </div>
+
+    <div class="section">
+      <h3>About Me</h3>
+      <textarea placeholder="Write something about yourself...">A passionate learner exploring Python, C++, Web Dev & AI/ML. Currently working on various academic projects.</textarea>
+    </div>
+
+    <div class="section">
+      <h3>Social Links</h3>
+      <input type="text" placeholder="LinkedIn Profile URL">
+      <input type="text" placeholder="GitHub Profile URL">
+      <input type="text" placeholder="Portfolio/Website URL">
+    </div>
+
+    <button class="btn">Update Profile</button>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+{% endblock %}
