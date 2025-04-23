@@ -79,6 +79,4 @@ A web application built with Flask that allows students to sign up, upload their
 - Session management to ensure authenticated access
 - Certificate access permissions to protect student privacy
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
